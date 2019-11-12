@@ -1,0 +1,7 @@
+version: '3.4'
+services:
+  structure_test:
+    image: jpnauta/remote-structure-test-docker
+    volumes:
+      - "./config.yaml:/root/config.yaml"
+    command: test --host localhost --username user --config ./config.yaml

@@ -1,0 +1,24 @@
+version: '3.4'
+services:
+  app:
+    build:
+      context: .
+      target: build
+    image: jpnauta/remote-structure-test
+    volumes:
+      - ssh:/ssh
+    command: /run-unit-tests.sh
+    environment:
+      SSH_USERNAME: root
+      SSH_PASSWORD: root
+      SSH_HOST: ssh
+    depends_on:
+      - ssh
+  ssh:
+    image: rastasheep/ubuntu-sshd
+    volumes:
+      - ssh:/home/root/
+    ports:
+      - 22:22
+volumes:
+  ssh:

@@ -1,0 +1,8 @@
+schemaVersion: 2.0.0
+commandTests:
+  - name: "Remote structure tests"
+    command: "which"
+    args: ["remote-structure-test"]
+    expectedOutput: ["/usr/bin/remote-structure-test"]
+metadataTest:
+  entrypoint: ["remote-structure-test"]

@@ -1,0 +1,27 @@
+schemaVersion: '1.0.0'
+commandTests:
+- name: 'bad command'
+  command: 'apt-get dslkfjasl'
+  excludedError: ['.*FAIL.*']
+  expectedOutput: ['.*Usage.*']
+- name: 'Expected contents do not exist'
+  command: 'apt-config dump'
+  expectedOutput: ['Acquire::Retries "3"']
+fileContentTests:
+- name: 'Expected contents do not exist'
+  expectedContents: ['.*httpredir\.debian\.org.*']
+  path: '/etc/apt/sources.list'
+- name: 'Excluded contents do exist'
+  excludedContents: ['.*archive\.canonical\.com.*']
+  path: '/etc/apt/sources.list'
+- name: 'Fake file'
+  expectedContents: ['Acquire::Retries 4;']
+  path: '/foo/bar'
+fileExistenceTests:
+- name: 'Fake Dir'
+  path: '/foo/bar'
+  shouldExist: true
+- name: 'Wrong permissions'
+  path: '/etc/apt/sources.list'
+  permissions: '-rwxrwxrwx'
+  shouldExist: true

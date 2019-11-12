@@ -1,0 +1,27 @@
+schemaVersion: '1.0.0'
+commandTests:
+- name: 'apt-get'
+  command: 'apt-get help'
+  excludedError: ['.*FAIL.*']
+  expectedOutput: ['.*Usage.*']
+- name: 'apt-config'
+  command: 'apt-config dump'
+  expectedOutput: ['APT::Install-Recommends "1"']
+fileContentTests:
+- name: 'Debian Sources'
+  excludedContents: ['.*gce_debian_mirror.*']
+  expectedContents: ['.*archive\.canonical\.com.*']
+  path: '/etc/apt/sources.list'
+fileExistenceTests:
+- name: 'Date'
+  path: '/bin/date'
+  isExecutableBy: 'owner'
+  permissions: '-rwxr-xr-x'
+- name: 'Networks'
+  path: '/etc/networks'
+  shouldExist: true
+- name: 'Machine ID'
+  path: '/etc/machine-id'
+- name: 'Dummy File'
+  path: '/etc/dummy'
+  shouldExist: false
