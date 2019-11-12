@@ -9,9 +9,9 @@ services:
       - ssh:/ssh
     command: /run-unit-tests.sh
     environment:
+      SSH_HOST: ssh:22
       SSH_USERNAME: root
       SSH_PASSWORD: root
-      SSH_HOST: ssh
     depends_on:
       - ssh
   ssh:

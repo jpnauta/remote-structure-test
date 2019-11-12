@@ -11,9 +11,9 @@ import (
 )
 
 var (
-	sshHost     = "localhost:22"
-	sshUsername = "root"
-	sshPassword = "root"
+	sshHost     = os.Getenv("SSH_HOST")
+	sshUsername = os.Getenv("SSH_USERNAME")
+	sshPassword = os.Getenv("SSH_PASSWORD")
 )
 
 func StandardArgs() []string {

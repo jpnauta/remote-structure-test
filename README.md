@@ -30,10 +30,10 @@ An example run using Docker Compose:
 version: '3'
 services:
   structure_test:
-    image: jpnauta/remote-structure-test-docker
+    image: jpnauta/remote-structure-test
     volumes:
       - "./config.yaml:/root/config.yaml"
-    command: test --host localhost --username user --config ./config.yaml
+    command: test --host localhost:22 --username user --config ./config.yaml
 ```
 
 Tests within this framework are specified through a YAML or JSON config file,
