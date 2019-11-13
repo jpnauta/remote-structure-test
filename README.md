@@ -26,7 +26,7 @@ To use remote structure tests to validate your host, you'll need the following:
 
 An example run using Docker Compose:
 
-```
+```yaml
 version: '3'
 services:
   structure_test:
@@ -71,6 +71,7 @@ match the stderr from running the command.
 
 Example:
 ```yaml
+schemaVersion: '1.0.0'
 commandTests:
   - name: "gunicorn flask"
     command: "which gunicorn"
@@ -103,9 +104,10 @@ directory should exist in the file system
 
 Example:
 ```yaml
+schemaVersion: '1.0.0'
 fileExistenceTests:
-- name: 'Root'
-  path: '/'
+- name: 'Date'
+  path: '/bin/date'
   shouldExist: true
   permissions: '-rw-r--r--'
   uid: 1000
@@ -131,6 +133,7 @@ should **not** match the contents of the file
 
 Example:
 ```yaml
+schemaVersion: '1.0.0'
 fileContentTests:
 - name: 'Debian Sources'
   path: '/etc/apt/sources.list'
